@@ -1,0 +1,2345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="en-us">
+<title>ROS2 Plugin API reference</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<script type="text/javascript">
+//
+function getParameterByName(name, url = window.location.href)
+{
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if(!results) return null;
+    if(!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+//
+                </script><style type="text/css">
+td.section { margin: 0; padding: 0; }
+                </style>
+</head>
+<body>
+<div align="center"><table class="allEncompassingTable">
+<tr><td id="title" class="section"><h1>ROS2 Plugin API reference</h1></td></tr>
+<tr><td id="info" class="section"><p class="infoBox">This plugin provides an interface with the ROS2 API</p></td></tr>
+<tr><td id="alphabetical" class="section"><pre class="lightGreyBox"><a href="?#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a>
+<a href="?#actionServerActionAbort">ROS2.actionServerActionAbort</a>
+<a href="?#actionServerActionCanceled">ROS2.actionServerActionCanceled</a>
+<a href="?#actionServerActionExecute">ROS2.actionServerActionExecute</a>
+<a href="?#actionServerActionIsActive">ROS2.actionServerActionIsActive</a>
+<a href="?#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a>
+<a href="?#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a>
+<a href="?#actionServerActionSucceed">ROS2.actionServerActionSucceed</a>
+<a href="?#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a>
+<a href="?#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a>
+<a href="?#call">ROS2.call</a>
+<a href="?#cancelLastGoal">ROS2.cancelLastGoal</a>
+<a href="?#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a>
+<a href="?#createActionClient">ROS2.createActionClient</a>
+<a href="?#createActionServer">ROS2.createActionServer</a>
+<a href="?#createClient">ROS2.createClient</a>
+<a href="?#createInterface">ROS2.createInterface</a>
+<a href="?#createPublisher">ROS2.createPublisher</a>
+<a href="?#createService">ROS2.createService</a>
+<a href="?#createSubscription">ROS2.createSubscription</a>
+<a href="?#deleteParam">ROS2.deleteParam</a>
+<a href="?#getInterfaceConstants">ROS2.getInterfaceConstants</a>
+<a href="?#getParamBool">ROS2.getParamBool</a>
+<a href="?#getParamDouble">ROS2.getParamDouble</a>
+<a href="?#getParamInt">ROS2.getParamInt</a>
+<a href="?#getParamString">ROS2.getParamString</a>
+<a href="?#getTime">ROS2.getTime</a>
+<a href="?#hasParam">ROS2.hasParam</a>
+<a href="?#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a>
+<a href="?#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a>
+<a href="?#imageTransportPublish">ROS2.imageTransportPublish</a>
+<a href="?#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a>
+<a href="?#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a>
+<a href="?#publish">ROS2.publish</a>
+<a href="?#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a>
+<a href="?#sendGoal">ROS2.sendGoal</a>
+<a href="?#sendTransform">ROS2.sendTransform</a>
+<a href="?#sendTransforms">ROS2.sendTransforms</a>
+<a href="?#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a>
+<a href="?#setParamBool">ROS2.setParamBool</a>
+<a href="?#setParamDouble">ROS2.setParamDouble</a>
+<a href="?#setParamInt">ROS2.setParamInt</a>
+<a href="?#setParamString">ROS2.setParamString</a>
+<a href="?#shutdownActionClient">ROS2.shutdownActionClient</a>
+<a href="?#shutdownActionServer">ROS2.shutdownActionServer</a>
+<a href="?#shutdownClient">ROS2.shutdownClient</a>
+<a href="?#shutdownPublisher">ROS2.shutdownPublisher</a>
+<a href="?#shutdownService">ROS2.shutdownService</a>
+<a href="?#shutdownSubscription">ROS2.shutdownSubscription</a>
+<a href="?#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a>
+<a href="?#supportedInterfaces">ROS2.supportedInterfaces</a>
+<a href="?#waitForService">ROS2.waitForService</a>
+</pre></td></tr>
+<tr><td id="commands" class="section">
+<h3 class="subsectionBar">
+<a name="actionClientTreatUInt8ArrayAsString" id="actionClientTreatUInt8ArrayAsString"></a>ROS2.actionClientTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this action client will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionClientTreatUInt8ArrayAsString(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>actionClientHandle</strong> (string): the action client handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionClientTreatUInt8ArrayAsString(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionAbort" id="actionServerActionAbort"></a>ROS2.actionServerActionAbort</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Indicate that a goal could not be reached and has been aborted. Only call this if the goal was executing but cannot be completed. This is a terminal state, no more methods should be called on a goal after this is called.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerActionAbort(string actionServerHandle, string goalUUID, table result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+<div>
+<strong>result</strong> (table): the result message</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerActionAbort(string actionServerHandle, string goalUUID, list result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionCanceled" id="actionServerActionCanceled"></a>ROS2.actionServerActionCanceled</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Indicate that a goal has been canceled. Only call this if the goal is executing or pending, but has been canceled. This is a terminal state, no more methods should be called on a goal after this is called.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerActionCanceled(string actionServerHandle, string goalUUID, table result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+<div>
+<strong>result</strong> (table): the result message</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerActionCanceled(string actionServerHandle, string goalUUID, list result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionExecute" id="actionServerActionExecute"></a>ROS2.actionServerActionExecute</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Indicate that the server is starting to execute a goal. Only call this if the goal is pending.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerActionExecute(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerActionExecute(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionIsActive" id="actionServerActionIsActive"></a>ROS2.actionServerActionIsActive</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Check if goal is pending or executing</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool result = ROS2.actionServerActionIsActive(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (bool): false if the goal has reached a terminal state</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool result = ROS2.actionServerActionIsActive(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionIsCanceling" id="actionServerActionIsCanceling"></a>ROS2.actionServerActionIsCanceling</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Check if there is a cancel request</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool result = ROS2.actionServerActionIsCanceling(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (bool): true if a cancelation request has been accepted for this goal</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool result = ROS2.actionServerActionIsCanceling(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionIsExecuting" id="actionServerActionIsExecuting"></a>ROS2.actionServerActionIsExecuting</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Check if the goal is executing</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool result = ROS2.actionServerActionIsExecuting(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (bool): true if the goal is in an executing state</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool result = ROS2.actionServerActionIsExecuting(string actionServerHandle, string goalUUID)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerActionSucceed" id="actionServerActionSucceed"></a>ROS2.actionServerActionSucceed</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Indicate that a goal has succeeded. Only call this if the goal is executing and has reached the desired final state. This is a terminal state, no more methods should be called on a goal after this is called.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerActionSucceed(string actionServerHandle, string goalUUID, table result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+<div>
+<strong>result</strong> (table): the result message</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerActionSucceed(string actionServerHandle, string goalUUID, list result)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerPublishFeedback" id="actionServerPublishFeedback"></a>ROS2.actionServerPublishFeedback</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Send an update about the progress of this goal. This must be only called when the goal is executing. If execution of a goal is deferred then <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> must be called first.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerPublishFeedback(string actionServerHandle, string goalUUID, table feedback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionServerHandle</strong> (string): the action server handle</div>
+<div>
+<strong>goalUUID</strong> (string): the goal unique identifier</div>
+<div>
+<strong>feedback</strong> (table): the feedback message</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerPublishFeedback(string actionServerHandle, string goalUUID, list feedback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="actionServerTreatUInt8ArrayAsString" id="actionServerTreatUInt8ArrayAsString"></a>ROS2.actionServerTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this action server will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionServerTreatUInt8ArrayAsString(string actionServerHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>actionServerHandle</strong> (string): the action server handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionServerTreatUInt8ArrayAsString(string actionServerHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="call" id="call"></a>ROS2.call</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Call the service associated with this service client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">table result = ROS2.call(string clientHandle, table request)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>clientHandle</strong> (string): the service client handle</div>
+<div>
+<strong>request</strong> (table): the message to publish</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (table): the response message, if the call succeeded</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">list result = ROS2.call(string clientHandle, list request)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="cancelLastGoal" id="cancelLastGoal"></a>ROS2.cancelLastGoal</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Cancel last submitted goal on the specified action client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool success = ROS2.cancelLastGoal(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>actionClientHandle</strong> (string): the action client handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>success</strong> (bool): false if canceling the goal to the action server has failed</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool success = ROS2.cancelLastGoal(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="clientTreatUInt8ArrayAsString" id="clientTreatUInt8ArrayAsString"></a>ROS2.clientTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this service client will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.clientTreatUInt8ArrayAsString(string clientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>clientHandle</strong> (string): the service client handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.clientTreatUInt8ArrayAsString(string clientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createActionClient" id="createActionClient"></a>ROS2.createActionClient</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a action client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string actionClientHandle = ROS2.createActionClient(string actionName, string actionType, string goalResponseCallback, string feedbackCallback, string resultCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionName</strong> (string): action name, e.g.: '/fibonacci'</div>
+<div>
+<strong>actionType</strong> (string): action type, e.g.: 'example_interfaces/action/Fibonacci'</div>
+<div>
+<strong>goalResponseCallback</strong> (string): the goal response callback, will be called with arguments (goal_id,accepted) where accepted is a boolean value</div>
+<div>
+<strong>feedbackCallback</strong> (string): the feedback callback, will be called with arguments (goal_id,feedback) where feedback is a table representing the Feedback message of the action type</div>
+<div>
+<strong>resultCallback</strong> (string): the result callback, will be called with arguments (goal_id,code,result) where code is a value from <a href="#enum:action_result_code">ROS2.action_result_code</a>, and result is a table representing the Result message of the action type</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>actionClientHandle</strong> (string): a handle to the ROS action client</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string actionClientHandle = ROS2.createActionClient(string actionName, string actionType, string goalResponseCallback, string feedbackCallback, string resultCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createActionServer" id="createActionServer"></a>ROS2.createActionServer</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create an action server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string actionServerHandle = ROS2.createActionServer(string actionName, string actionType, string handleGoalCallback, string handleCancelCallback, string handleAcceptedCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionName</strong> (string): action name, e.g.: '/fibonacci'</div>
+<div>
+<strong>actionType</strong> (string): action type, e.g.: 'example_interfaces/action/Fibonacci'</div>
+<div>
+<strong>handleGoalCallback</strong> (string): name of callback function, which will be called with arguments (goal_id, goal) where goal is a table representing the Goal message of the action type. the callback must return a valid <a href="#enum:goal_response">ROS2.goal_response</a>
+</div>
+<div>
+<strong>handleCancelCallback</strong> (string): name of callback function, which will be called with arguments (goal_id, goal) where goal is a table representing the Goal message of the action type. the callback must return a valid <a href="#enum:cancel_response">ROS2.cancel_response</a>
+</div>
+<div>
+<strong>handleAcceptedCallback</strong> (string): name of callback function, which will be called with arguments (goal_id, goal) where goal is a table representing the Goal message of the action type. it will be called after the goal is accepted, and is responsible of executing the goal, but must return immediately.</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>actionServerHandle</strong> (string): a handle to the action server</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string actionServerHandle = ROS2.createActionServer(string actionName, string actionType, string handleGoalCallback, string handleCancelCallback, string handleAcceptedCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createClient" id="createClient"></a>ROS2.createClient</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a service client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string clientHandle = ROS2.createClient(string serviceName, string serviceType)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>serviceName</strong> (string): service name, e.g.: '/trigger'</div>
+<div>
+<strong>serviceType</strong> (string): service type, e.g.: 'std_srvs/srv/Trigger'</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>clientHandle</strong> (string): a handle to the ROS service client</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string clientHandle = ROS2.createClient(string serviceName, string serviceType)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createInterface" id="createInterface"></a>ROS2.createInterface</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Construct an interface of the specified type, initialized with the default values.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">table result = ROS2.createInterface(string type)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>type</strong> (string): type, e.g.: 'geometry_msgs/msg/Twist'</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (table): the interface object</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">list result = ROS2.createInterface(string type)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createPublisher" id="createPublisher"></a>ROS2.createPublisher</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a topic publisher.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string publisherHandle = ROS2.createPublisher(string topicName, string topicType, int queueSize=1, bool latch=false)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>topicName</strong> (string): topic name, e.g.: '/cmd_vel'</div>
+<div>
+<strong>topicType</strong> (string): topic type, e.g.: 'geometry_msgs/msg/Twist'</div>
+<div>
+<strong>queueSize</strong> (int, default: 1): (optional) queue size</div>
+<div>
+<strong>latch</strong> (bool, default: false): (optional) latch topic</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>publisherHandle</strong> (string): a handle to the ROS publisher</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string publisherHandle = ROS2.createPublisher(string topicName, string topicType, int queueSize=1, bool latch=false)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createService" id="createService"></a>ROS2.createService</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a service.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string serviceHandle = ROS2.createService(string serviceName, string serviceType, string serviceCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>serviceName</strong> (string): service name, e.g.: '/trigger'</div>
+<div>
+<strong>serviceType</strong> (string): service type, e.g.: 'std_srvs/srv/Trigger'</div>
+<div>
+<strong>serviceCallback</strong> (string): name of the callback function, which will be called with a single argument of type table containing the service request payload; it must return another table containing the response</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>serviceHandle</strong> (string): a handle to the ROS service</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string serviceHandle = ROS2.createService(string serviceName, string serviceType, string serviceCallback)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="createSubscription" id="createSubscription"></a>ROS2.createSubscription</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a subscription to a topic.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string subscriptionHandle = ROS2.createSubscription(string topicName, string topicType, string topicCallback, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>topicName</strong> (string): topic name, e.g.: '/cmd_vel'</div>
+<div>
+<strong>topicType</strong> (string): topic type, e.g.: 'geometry_msgs/msg/Twist'</div>
+<div>
+<strong>topicCallback</strong> (string): name of the callback function, which will be called with a single argument of type table containing the message payload, e.g.: {linear={x=1.5, y=0.0, z=0.0}, angular={x=0.0, y=0.0, z=-2.3}}</div>
+<div>
+<strong>queueSize</strong> (int, default: 1): (optional) queue size</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>subscriptionHandle</strong> (string): a handle to the ROS subscription</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string subscriptionHandle = ROS2.createSubscription(string topicName, string topicType, string topicCallback, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="deleteParam" id="deleteParam"></a>ROS2.deleteParam</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Delete a parameter in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.deleteParam(string name)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>name</strong> (string): name of the parameter</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.deleteParam(string name)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getInterfaceConstants" id="getInterfaceConstants"></a>ROS2.getInterfaceConstants</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Get an object with the constants defined in the specified interface.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">table result = ROS2.getInterfaceConstants(string type)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>type</strong> (string): type, e.g.: 'geometry_msgs/msg/Twist'</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (table): the constants object</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">list result = ROS2.getInterfaceConstants(string type)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getParamBool" id="getParamBool"></a>ROS2.getParamBool</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Retrieve a boolean parameter from the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool exists, bool value = ROS2.getParamBool(string name, bool defaultValue=false)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>defaultValue</strong> (bool, default: false): default value returned when parameter does not exist</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">
+<div>
+<strong>exists</strong> (bool): true if the param exists otherwise false</div>
+<div>
+<strong>value</strong> (bool): the value of the requested parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool exists, bool value = ROS2.getParamBool(string name, bool defaultValue=false)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getParamDouble" id="getParamDouble"></a>ROS2.getParamDouble</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Retrieve a double parameter from the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool exists, float value = ROS2.getParamDouble(string name, float defaultValue=0.0)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>defaultValue</strong> (float, default: 0.0): default value returned when parameter does not exist</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">
+<div>
+<strong>exists</strong> (bool): true if the param exists otherwise false</div>
+<div>
+<strong>value</strong> (float): the value of the requested parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool exists, float value = ROS2.getParamDouble(string name, float defaultValue=0.0)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getParamInt" id="getParamInt"></a>ROS2.getParamInt</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Retrieve an integer parameter from the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool exists, int value = ROS2.getParamInt(string name, int defaultValue=0)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>defaultValue</strong> (int, default: 0): default value returned when parameter does not exist</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">
+<div>
+<strong>exists</strong> (bool): true if the param exists otherwise false</div>
+<div>
+<strong>value</strong> (int): the value of the requested parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool exists, int value = ROS2.getParamInt(string name, int defaultValue=0)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getParamString" id="getParamString"></a>ROS2.getParamString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Retrieve a string parameter from the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool exists, string value = ROS2.getParamString(string name, string defaultValue="")<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>defaultValue</strong> (string, default: ""): default value returned when parameter does not exist</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">
+<div>
+<strong>exists</strong> (bool): true if the param exists otherwise false</div>
+<div>
+<strong>value</strong> (string): the value of the requested parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool exists, string value = ROS2.getParamString(string name, string defaultValue="")<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="getTime" id="getTime"></a>ROS2.getTime</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Return the current time according to the specified clock.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">sim_ros2_time time = ROS2.getTime(int clock_type=sim_ros2_clock_ros)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>clock_type</strong> (int, default: sim_ros2_clock_ros): type of clock. see <a href="#enum:clock_type">ROS2.clock_type</a>.</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>time</strong> (sim_ros2_time): ROS time</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">sim_ros2_time time = ROS2.getTime(int clock_type=sim_ros2_clock_ros)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"></td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="hasParam" id="hasParam"></a>ROS2.hasParam</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Check wether a parameter exists in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool exists = ROS2.hasParam(string name)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>name</strong> (string): name of the parameter</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>exists</strong> (bool): true if the parameter exists, false otherwise</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool exists = ROS2.hasParam(string name)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="imageTransportCreatePublisher" id="imageTransportCreatePublisher"></a>ROS2.imageTransportCreatePublisher</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a publisher using ImageTransport.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string publisherHandle = ROS2.imageTransportCreatePublisher(string topicName, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>topicName</strong> (string): topic name, e.g.: '/cmd_vel'</div>
+<div>
+<strong>queueSize</strong> (int, default: 1): (optional) queue size</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>publisherHandle</strong> (string): a handle to the ROS publisher</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string publisherHandle = ROS2.imageTransportCreatePublisher(string topicName, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="imageTransportCreateSubscription" id="imageTransportCreateSubscription"></a>ROS2.imageTransportCreateSubscription</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Create a subscription using ImageTransport.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string subscriptionHandle = ROS2.imageTransportCreateSubscription(string topicName, string topicCallback, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>topicName</strong> (string): topic name, e.g.: '/cmd_vel'</div>
+<div>
+<strong>topicCallback</strong> (string): name of the callback function, which will be called as: topicCallback(string data, number width, number height)</div>
+<div>
+<strong>queueSize</strong> (int, default: 1): (optional) queue size</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>subscriptionHandle</strong> (string): a handle to the ROS subscription</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">string subscriptionHandle = ROS2.imageTransportCreateSubscription(string topicName, string topicCallback, int queueSize=1)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="imageTransportPublish" id="imageTransportPublish"></a>ROS2.imageTransportPublish</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Publish a message on the topic associated with this publisher using ImageTransport.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.imageTransportPublish(string publisherHandle, string data, int width, int height, string frame_id)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>publisherHandle</strong> (string): the publisher handle</div>
+<div>
+<strong>data</strong> (string): the image data</div>
+<div>
+<strong>width</strong> (int): image width</div>
+<div>
+<strong>height</strong> (int): image height</div>
+<div>
+<strong>frame_id</strong> (string): frame id</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.imageTransportPublish(string publisherHandle, string data, int width, int height, string frame_id)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="imageTransportShutdownPublisher" id="imageTransportShutdownPublisher"></a>ROS2.imageTransportShutdownPublisher</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the publisher using ImageTransport.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.imageTransportShutdownPublisher(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>publisherHandle</strong> (string): the publisher handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.imageTransportShutdownPublisher(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="imageTransportShutdownSubscription" id="imageTransportShutdownSubscription"></a>ROS2.imageTransportShutdownSubscription</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the subscription using ImageTransport.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.imageTransportShutdownSubscription(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>subscriptionHandle</strong> (string): the subscription handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.imageTransportShutdownSubscription(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="publish" id="publish"></a>ROS2.publish</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Publish a message on the topic associated with this publisher.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.publish(string publisherHandle, table message)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>publisherHandle</strong> (string): the publisher handle</div>
+<div>
+<strong>message</strong> (table): the message to publish</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.publish(string publisherHandle, list message)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="publisherTreatUInt8ArrayAsString" id="publisherTreatUInt8ArrayAsString"></a>ROS2.publisherTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this publisher will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.publisherTreatUInt8ArrayAsString(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>publisherHandle</strong> (string): the publisher handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.publisherTreatUInt8ArrayAsString(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="sendGoal" id="sendGoal"></a>ROS2.sendGoal</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Send a goal using the specified action client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool success = ROS2.sendGoal(string actionClientHandle, table goal)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>actionClientHandle</strong> (string): the action client handle</div>
+<div>
+<strong>goal</strong> (table): the goal to send</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>success</strong> (bool): false if sending the goal to the action server has failed</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool success = ROS2.sendGoal(string actionClientHandle, list goal)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="sendTransform" id="sendTransform"></a>ROS2.sendTransform</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Publish a TF transformation between frames.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.sendTransform(table transform)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>transform</strong> (table): the transformation expressed as a geometry_msgs/msg/TransformStamped message, i.e. {header={stamp=timeStamp, frame_id='...'}, child_frame_id='...', transform={translation={x=..., y=..., z=...}, rotation={x=..., y=..., z=..., w=...}}}</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.sendTransform(list transform)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#sendTransforms">ROS2.sendTransforms</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="sendTransforms" id="sendTransforms"></a>ROS2.sendTransforms</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Publish several TF transformations between frames.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.sendTransforms(table transforms)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>transforms</strong> (table): an array of geometry_msgs/msg/TransformStamped messages</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.sendTransforms(list transforms)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#sendTransform">ROS2.sendTransform</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="serviceTreatUInt8ArrayAsString" id="serviceTreatUInt8ArrayAsString"></a>ROS2.serviceTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this service will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.serviceTreatUInt8ArrayAsString(string serviceHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>serviceHandle</strong> (string): the service handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.serviceTreatUInt8ArrayAsString(string serviceHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="setParamBool" id="setParamBool"></a>ROS2.setParamBool</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Set a boolean parameter in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.setParamBool(string name, bool value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>value</strong> (bool): value of the parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.setParamBool(string name, bool value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="setParamDouble" id="setParamDouble"></a>ROS2.setParamDouble</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Set a double parameter in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.setParamDouble(string name, float value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>value</strong> (float): value of the parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.setParamDouble(string name, float value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamInt">ROS2.setParamInt</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="setParamInt" id="setParamInt"></a>ROS2.setParamInt</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Set a integer parameter in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.setParamInt(string name, int value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>value</strong> (int): value of the parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.setParamInt(string name, int value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamString">ROS2.setParamString</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="setParamString" id="setParamString"></a>ROS2.setParamString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Set a string parameter in the ROS Parameter Server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.setParamString(string name, string value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>name</strong> (string): name of the parameter</div>
+<div>
+<strong>value</strong> (string): value of the parameter</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.setParamString(string name, string value)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#deleteParam">ROS2.deleteParam</a> <a href="#getParamBool">ROS2.getParamBool</a> <a href="#getParamDouble">ROS2.getParamDouble</a> <a href="#getParamInt">ROS2.getParamInt</a> <a href="#getParamString">ROS2.getParamString</a> <a href="#hasParam">ROS2.hasParam</a> <a href="#setParamBool">ROS2.setParamBool</a> <a href="#setParamDouble">ROS2.setParamDouble</a> <a href="#setParamInt">ROS2.setParamInt</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownActionClient" id="shutdownActionClient"></a>ROS2.shutdownActionClient</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the action client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownActionClient(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>actionClientHandle</strong> (string): the action client handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownActionClient(string actionClientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownActionServer" id="shutdownActionServer"></a>ROS2.shutdownActionServer</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the action server.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownActionServer(string actionServerHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>actionServerHandle</strong> (string): the action server handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownActionServer(string actionServerHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownClient" id="shutdownClient"></a>ROS2.shutdownClient</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the service client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownClient(string clientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>clientHandle</strong> (string): the service client handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownClient(string clientHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownPublisher" id="shutdownPublisher"></a>ROS2.shutdownPublisher</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the specified publisher.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownPublisher(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>publisherHandle</strong> (string): the publisher handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownPublisher(string publisherHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownService" id="shutdownService"></a>ROS2.shutdownService</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the service.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownService(string serviceHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>serviceHandle</strong> (string): the service handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownService(string serviceHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a> <a href="#waitForService">ROS2.waitForService</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="shutdownSubscription" id="shutdownSubscription"></a>ROS2.shutdownSubscription</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Shutdown the subscription.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.shutdownSubscription(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>subscriptionHandle</strong> (string): the subscription handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.shutdownSubscription(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="subscriptionTreatUInt8ArrayAsString" id="subscriptionTreatUInt8ArrayAsString"></a>ROS2.subscriptionTreatUInt8ArrayAsString</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">After calling this function, this subscription will treat uint8 arrays as string. Using strings should be in general much faster that using int arrays in Lua.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.subscriptionTreatUInt8ArrayAsString(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>subscriptionHandle</strong> (string): the subscription handle</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.subscriptionTreatUInt8ArrayAsString(string subscriptionHandle)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="supportedInterfaces" id="supportedInterfaces"></a>ROS2.supportedInterfaces</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Retrieve a list of supported interfaces.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">string[] result = ROS2.supportedInterfaces()<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (table of string): the list of supported interfaces</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">list result = ROS2.supportedInterfaces()<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#createInterface">ROS2.createInterface</a> <a href="#createPublisher">ROS2.createPublisher</a> <a href="#createSubscription">ROS2.createSubscription</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#imageTransportCreatePublisher">ROS2.imageTransportCreatePublisher</a> <a href="#imageTransportCreateSubscription">ROS2.imageTransportCreateSubscription</a> <a href="#imageTransportPublish">ROS2.imageTransportPublish</a> <a href="#imageTransportShutdownPublisher">ROS2.imageTransportShutdownPublisher</a> <a href="#imageTransportShutdownSubscription">ROS2.imageTransportShutdownSubscription</a> <a href="#publish">ROS2.publish</a> <a href="#publisherTreatUInt8ArrayAsString">ROS2.publisherTreatUInt8ArrayAsString</a> <a href="#sendTransform">ROS2.sendTransform</a> <a href="#sendTransforms">ROS2.sendTransforms</a> <a href="#shutdownPublisher">ROS2.shutdownPublisher</a> <a href="#shutdownSubscription">ROS2.shutdownSubscription</a> <a href="#subscriptionTreatUInt8ArrayAsString">ROS2.subscriptionTreatUInt8ArrayAsString</a> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#waitForService">ROS2.waitForService</a> <a href="#actionClientTreatUInt8ArrayAsString">ROS2.actionClientTreatUInt8ArrayAsString</a> <a href="#actionServerActionAbort">ROS2.actionServerActionAbort</a> <a href="#actionServerActionCanceled">ROS2.actionServerActionCanceled</a> <a href="#actionServerActionExecute">ROS2.actionServerActionExecute</a> <a href="#actionServerActionIsActive">ROS2.actionServerActionIsActive</a> <a href="#actionServerActionIsCanceling">ROS2.actionServerActionIsCanceling</a> <a href="#actionServerActionIsExecuting">ROS2.actionServerActionIsExecuting</a> <a href="#actionServerActionSucceed">ROS2.actionServerActionSucceed</a> <a href="#actionServerPublishFeedback">ROS2.actionServerPublishFeedback</a> <a href="#actionServerTreatUInt8ArrayAsString">ROS2.actionServerTreatUInt8ArrayAsString</a> <a href="#cancelLastGoal">ROS2.cancelLastGoal</a> <a href="#createActionClient">ROS2.createActionClient</a> <a href="#createActionServer">ROS2.createActionServer</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#sendGoal">ROS2.sendGoal</a> <a href="#shutdownActionClient">ROS2.shutdownActionClient</a> <a href="#shutdownActionServer">ROS2.shutdownActionServer</a>
+</td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="waitForService" id="waitForService"></a>ROS2.waitForService</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Wait for the service associated with this service client.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">bool result = ROS2.waitForService(string clientHandle, float timeout)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>clientHandle</strong> (string): the service client handle</div>
+<div>
+<strong>timeout</strong> (float): the amount of time to wait in seconds</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet"><div>
+<strong>result</strong> (bool): false if the service is not found after the specified timeout</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">bool result = ROS2.waitForService(string clientHandle, float timeout)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"> <a href="#call">ROS2.call</a> <a href="#clientTreatUInt8ArrayAsString">ROS2.clientTreatUInt8ArrayAsString</a> <a href="#createClient">ROS2.createClient</a> <a href="#createInterface">ROS2.createInterface</a> <a href="#createService">ROS2.createService</a> <a href="#getInterfaceConstants">ROS2.getInterfaceConstants</a> <a href="#serviceTreatUInt8ArrayAsString">ROS2.serviceTreatUInt8ArrayAsString</a> <a href="#shutdownClient">ROS2.shutdownClient</a> <a href="#shutdownService">ROS2.shutdownService</a> <a href="#supportedInterfaces">ROS2.supportedInterfaces</a>
+</td>
+</tr>
+</table>
+<br>
+</td></tr>
+<tr><td id="enums" class="section">
+<br><br><h1>Constants</h1>
+<p>Constants used in the various functions. Refer to each constant using <i>enumName.constantName</i>, i.e. <b>simUI.curve_type.xy</b> for <b>xy</b> constant in <b>simUI.curve_type</b> enum.</p>
+<h3 class="subsectionBar">
+<a name="enum:clock_type" id="enum:clock_type"></a>ROS2.clock_type</h3>
+<table class="apiConstantsTable"><tbody><tr><td>
+<div><strong>ros</strong></div>
+<div><strong>system</strong></div>
+<div><strong>steady</strong></div>
+</td></tr></tbody></table>
+<h3 class="subsectionBar">
+<a name="enum:action_result_code" id="enum:action_result_code"></a>ROS2.action_result_code</h3>
+<table class="apiConstantsTable"><tbody><tr><td>
+<div><strong>succeeded</strong></div>
+<div><strong>aborted</strong></div>
+<div><strong>canceled</strong></div>
+<div><strong>unknown</strong></div>
+</td></tr></tbody></table>
+<h3 class="subsectionBar">
+<a name="enum:goal_response" id="enum:goal_response"></a>ROS2.goal_response</h3>
+<table class="apiConstantsTable"><tbody><tr><td>
+<div><strong>reject</strong></div>
+<div><strong>accept_and_execute</strong></div>
+<div><strong>accept_and_defer</strong></div>
+</td></tr></tbody></table>
+<h3 class="subsectionBar">
+<a name="enum:cancel_response" id="enum:cancel_response"></a>ROS2.cancel_response</h3>
+<table class="apiConstantsTable"><tbody><tr><td>
+<div><strong>reject</strong></div>
+<div><strong>accept</strong></div>
+</td></tr></tbody></table>
+</td></tr>
+<tr><td id="structs" class="section">
+<br><br><h1>Data structures</h1>
+<p>Data structures are used to pass complex data around. Create data structures in Lua in the form of a map, e.g.: <code>{line_size=3, add_to_legend=false, selectable=true}</code></p>
+<h3 class="subsectionBar">
+<a name="struct:sim_ros2_time" id="struct:sim_ros2_time"></a>sim_ros2_time</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                Description
+                                            </td>
+<td class="apiTableRightDescr">Time data structure, equivalent of builtin_interfaces/msg/Time<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Fields</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>sec</strong> (int): seconds</div>
+<div>
+<strong>nanosec</strong> (int): nanoseconds</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                See also
+                                            </td>
+<td class="apiTableRightDescr"></td>
+</tr>
+</table>
+<br>
+</td></tr>
+<tr><td id="scriptFunctions" class="section">
+<br><br><h1>Script functions</h1>
+<p>Script functions are used to call some lua code from the plugin side (tipically used for event handlers).</p>
+<h3 class="subsectionBar">
+<a name="scriptfun:subscriptionCallback" id="scriptfun:subscriptionCallback"></a>subscriptionCallback</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Callback for ROS subscription.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.subscriptionCallback(table message)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam"><div>
+<strong>message</strong> (table): the topic payload (i.e. the message)</div></td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.subscriptionCallback(list message)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"></td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="scriptfun:imageTransportCallback" id="scriptfun:imageTransportCallback"></a>imageTransportCallback</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Callback for ROS ImageTransport subscription.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.imageTransportCallback(string data, int width, int height)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>data</strong> (string): the image data</div>
+<div>
+<strong>width</strong> (int): image width</div>
+<div>
+<strong>height</strong> (int): image height</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.imageTransportCallback(string data, int width, int height)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"></td>
+</tr>
+</table>
+<br><h3 class="subsectionBar">
+<a name="scriptfun:actionGoalResponseCallback" id="scriptfun:actionGoalResponseCallback"></a>actionGoalResponseCallback</h3>
+<table class="apiTable">
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    Description
+                                                </td>
+<td class="apiTableRightDescr">Callback for action client goal response.</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLSyn">Lua synopsis</td>
+<td class="apiTableRightLSyn">ROS2.actionGoalResponseCallback(string goalID, bool accepted)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLParam">Lua parameters</td>
+<td class="apiTableRightLParam">
+<div>
+<strong>goalID</strong> (string): the goal id</div>
+<div>
+<strong>accepted</strong> (bool): true if the goal was accepted by the action server</div>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftLRet">Lua return values</td>
+<td class="apiTableRightLRet">-</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftPSyn">Python synopsis</td>
+<td class="apiTableRightPSyn">ROS2.actionGoalResponseCallback(string goalID, bool accepted)<br>
+</td>
+</tr>
+<tr class="apiTableTr">
+<td class="apiTableLeftDescr">
+                                                    See also
+                                                </td>
+<td class="apiTableRightDescr"></td>
+</tr>
+</table>
+<br>
+</td></tr>
+</table></div>
+<script type="text/javascript">
+//
+view = getParameterByName('view')
+document.getElementById('alphabetical').style.display = view == 'alphabetical' ? 'table-cell' : 'none'
+document.getElementById('commands').style.display = view == null ? 'table-cell' : 'none'
+document.getElementById('enums').style.display = view == null ? 'table-cell' : 'none'
+document.getElementById('structs').style.display = view == null ? 'table-cell' : 'none'
+document.getElementById('scriptFunctions').style.display = view == null ? 'table-cell' : 'none'
+//
+                </script><link rel="stylesheet" href="../js/hljs/11.8.0/styles/default.min.css">
+<script src="../js/hljs/11.8.0/highlight.min.js"></script><script src="../js/hljs/11.8.0/languages/cmake.min.js"></script><script src="../js/hljs/11.8.0/languages/cpp.min.js"></script><script src="../js/hljs/11.8.0/languages/java.min.js"></script><script src="../js/hljs/11.8.0/languages/javascript.min.js"></script><script src="../js/hljs/11.8.0/languages/lua.min.js"></script><script src="../js/hljs/11.8.0/languages/matlab.min.js"></script><script src="../js/hljs/11.8.0/languages/python.min.js"></script><script src="../js/hljs/11.8.0/languages/rust.min.js"></script><script src="../js/hljs/11.8.0/languages/xml.min.js"></script><script>document.querySelectorAll('code.hljs').forEach(el => {hljs.highlightElement(el);})</script>
+</body>
+</html>
