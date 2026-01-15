@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+
 set -xe
 
 docker build --platform linux/amd64 --tag learning_machines .
