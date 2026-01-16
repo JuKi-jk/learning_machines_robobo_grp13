@@ -34,11 +34,11 @@ class PPOConfig:
     ir_scale_max: float = 1.0
     ir_noise_std: float = 0.0
     collision_penalty: float = 2.0
-    near_penalty: float = 0.5
+    near_penalty: float = 0.2
     step_penalty: float = 0.01
     near_penalty: float = 0.5
     step_penalty: float = 0.01
-    explore_reward: float = 1.0
+    explore_reward: float = 2.0
     explore_cell_size: float = 0.25
     forward_reward: float = 0.01
     allow_exploration_reward: bool = True
