@@ -5,8 +5,8 @@ set -xe
 docker build --tag learning_machines .
 # Mounting to a directory that does not exist creates it.
 # Mounting to relative paths works since docker engine 23
-docker run -t --rm -p 45100:45100 -p 45101:45101 -v "$(pwd)/results:/root/results" learning_machines "$@"
-sudo docker run -it --rm --entrypoint /bin/bash -p 45100:45100 -p 45101:45101 -v "$(pwd)/results:/root/results" learning_machines
+# docker run -t --rm -p 45100:45100 -p 45101:45101 -v "$(pwd)/results:/root/results" learning_machines "$@"
+docker run -it --rm --name task_0 --entrypoint /bin/bash -p 45100:45100 -p 45101:45101 -v "$(pwd)/results:/root/results" -v "$(pwd)/models:/root/catkin_ws/src/learning_machines/src/learning_machines/models" learning_machines
 
 # Because docker runs as root, this means the files will be owned by the root user.
 # Change this with:

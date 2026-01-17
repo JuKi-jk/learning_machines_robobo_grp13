@@ -70,3 +70,27 @@ def run_task_0(rob: IRobobo):
 
     if isinstance(rob, SimulationRobobo):
         rob.stop_simulation()
+
+
+
+
+
+# def task_1(rob: IRobobo):
+#     if isinstance(rob, SimulationRobobo):
+#         rob.play_simulation()
+#     print("Started task 1")
+
+#     ir_values = []
+#     speed = 40
+#     for _ in range(150):
+#         irs = rob.read_irs()
+#         print(max(irs))
+#         ir_values.append(max(irs))
+#         rob.move_blocking(speed, speed, 100)
+
+#     print("max:" , max(ir_values))
+#     if isinstance(rob, SimulationRobobo):
+#         rob.stop_simulation()
+
+
+

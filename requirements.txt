@@ -4,3 +4,8 @@ coppeliasim-zmqremoteapi-client~=2.0
 
 numpy~=1.24
 opencv-python~=4.8
+
+shimmy>=2.0
+gym==0.26.2
+stable-baselines3~=2.0
+torch~=2.1
