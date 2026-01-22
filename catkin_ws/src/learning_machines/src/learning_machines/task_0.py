@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 from data_files import FIGURES_DIR
 from robobo_interface import (
@@ -66,7 +67,7 @@ def run_task_0(rob: IRobobo):
     if isinstance(rob, SimulationRobobo):
         rob.play_simulation()
 
-    task_0(rob)
+    test(rob)
 
     if isinstance(rob, SimulationRobobo):
         rob.stop_simulation()
@@ -75,22 +76,54 @@ def run_task_0(rob: IRobobo):
 
 
 
-# def task_1(rob: IRobobo):
-#     if isinstance(rob, SimulationRobobo):
-#         rob.play_simulation()
-#     print("Started task 1")
+def test(rob: IRobobo):
+    print("Started task test")
 
-#     ir_values = []
-#     speed = 40
-#     for _ in range(150):
-#         irs = rob.read_irs()
-#         print(max(irs))
-#         ir_values.append(max(irs))
-#         rob.move_blocking(speed, speed, 100)
+    ir_values = []
+    speed = 10
+    for _ in range(150):
 
-#     print("max:" , max(ir_values))
-#     if isinstance(rob, SimulationRobobo):
-#         rob.stop_simulation()
+        #------------------------------------
+        irs = np.array(rob.read_irs(), dtype=np.float32)
+        # irs = np.clip(irs, 0, 60000)
+        weights = np.array([1, 1, 2, 2, 2, 2, 1, 1])  # front sensors heavier
+        ir_avg = np.average(irs, weights=weights)
+        ir_norm = np.clip(ir_avg / 60000, 0, 1)
+        print("IR avg", ir_avg)
+        #------------------------------------
+
+        #------------------------------------
+        if isinstance(rob, SimulationRobobo):
+            number = rob.get_nr_food_collected()
+            print("Food collected:", number)
+        #------------------------------------
+
+        #------------------------------------
+        img = rob.read_image_front()
+        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        # mask of green
+        mask = cv2.inRange(hsv, (40, 70, 70), (85, 255, 255))
+        green_ratio = cv2.countNonZero(mask) / (img.shape[0] * img.shape[1])
+        print("Green ratio:", green_ratio)
+        ys, xs = np.where(mask > 0)
+
+        if len(xs) == 0:
+            # No food visible → safe defaults
+            x_center = 0.0
+            green_ratio = 0.0
+        else:
+            mean_x = np.mean(xs)
+            x_center = mean_x / img.shape[1]  # normalize to [0, 1]
+            x_center = (x_center - 0.5) * 2 # normalize to [-1, 1]
+
+        print("Center:", x_center)
+        #------------------------------------
+
+
+
+        ir_values.append(max(irs))
+        rob.move_blocking(speed, -speed, 200)
+
 
 
 

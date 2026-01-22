@@ -174,19 +174,13 @@ def task_1_predict(rob: IRobobo, model_name):
         rob.play_simulation()
 
     env = DummyVecEnv([lambda: RoboboEnv(rob)])
-    model = PPO("MlpPolicy", env, verbose=1)
-    model.load("/root/models/" + model_name)
+    model = PPO.load("/root/models/" + model_name, env=env)
 
     obs = env.reset()
-    for _ in range(200):
+    for _ in range(500):
         action, _ = model.predict(obs, deterministic=True)
-        max_abs = np.max(np.abs(action))  # 0.8
-        # Scale action, because predicted action values are extremely low
-        if max_abs > 0:  # Highest wheel action value is scaled to 0.8 for smooth movement
-            scale = 0.8 / max_abs
-        else:
-            scale = 1.0
-        obs, _, _, _ = env.step(action * scale)
+        print(action)
+        obs, _, _, _ = env.step(action)
 
     if isinstance(rob, SimulationRobobo):
         rob.stop_simulation()
