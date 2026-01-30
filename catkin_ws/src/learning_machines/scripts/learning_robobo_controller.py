@@ -6,7 +6,7 @@ from learning_machines import run_all_actions
 from learning_machines import run_task_0
 from learning_machines import run_task_1
 from learning_machines import run_task_2
-# from learning_machines import run_task_3
+from learning_machines import run_task_3
 
 if __name__ == "__main__":
     # You can do better argument parsing than this!
@@ -48,5 +48,11 @@ if __name__ == "__main__":
                 run_task_2(rob, mode=sys.argv[3])
         else:
             run_task_2(rob)
-    # elif sys.argv[2] == "task3":
-        # run_task_3(rob)
+    elif sys.argv[2] == "task3":
+        if len(sys.argv) > 3:
+            if len(sys.argv) > 4:
+                run_task_3(rob, mode=sys.argv[3], model_name=sys.argv[4])
+            else:
+                run_task_3(rob, mode=sys.argv[3])
+        else:
+            run_task_3(rob)

@@ -1,10 +1,8 @@
 import cv2
-import random
-import os
 import numpy as np
+import os
 import csv
 import time
-
 
 from data_files import FIGURES_DIR
 from robobo_interface import (
@@ -25,7 +23,6 @@ from gymnasium import Env
 from gymnasium.spaces import Box
 
 MODE = None
-
 MAX_STEPS = 400
 
 # Constants for fitness calculation
@@ -33,8 +30,8 @@ MAX_SPEED = 60
 TURN_SPEED = 25
 FOOD_REWARD = 1000
 IR_NORM_FACTOR = 1000.0 # For normalizing IR readings
-PHONE_TILT = 101
-PHONE_PAN = 193
+PHONE_TILT = 109
+PHONE_PAN = 180
 ACTION_EPS = 0.03  # how similar is "same"
 LOW_MOVEMENT_THRESH = 0.03 # Below this is considered no movement
 STAGNATION_PENALTY = 2.0 # Per step of stagnation
@@ -43,6 +40,24 @@ SUCCESS_BONUS = 1000 # For completing the task
 FAILURE_PENALTY = 500 # For failing the task
 AFTER_FOOD_PENALTY = 100 # Penalty for moving fast right after eating
 COLLISION_PENALTY = 100 # Penalty for being too close to wall
+
+def save_results(filename, components):
+    results_dir = "/root/results/"
+
+    with open(results_dir + filename, "a", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            time.time(),
+            float(components[0]),
+            float(components[1]),
+            float(components[2]),
+            float(components[3]),
+            float(components[4]),
+            float(components[5]),
+            float(components[6]),
+            float(components[7]),
+            float(components[8])
+        ])
 
 def calculate_fitness(obs, action, found_food, stagnation_steps, no_food_steps, save_to_results=False, filename="Default_Fitness"):
     x_center = obs[0]
@@ -120,31 +135,34 @@ def termination(rob, food, avg_irs, green_ratio, no_food_steps):
     truncated = False
     terminated = False
     extra_reward = 0
-    if rob.get_sim_time() > 180 * 3: # Time limit reached
-        print("Time limit reached")
-        truncated = True
-        extra_reward = 0
+    if isinstance(rob, SimulationRobobo):
+        if rob.get_sim_time() > 180 * 3: # Time limit reached
+            print("Time limit reached")
+            truncated = True
+            extra_reward = 0
 
     if food >= 7: # All food found
         print("All food found")
         terminated = True
-        extra_reward = SUCCESS_BONUS + (180*3 - rob.get_sim_time()) * 10  # faster is better
+        if isinstance(rob, SimulationRobobo):
+            extra_reward = SUCCESS_BONUS + (180*3 - rob.get_sim_time()) * 10  # faster is better
 
     if avg_irs > 0.85 and green_ratio == 0: # Collission termination
         print("Collision detected")
         terminated = True
         extra_reward -= FAILURE_PENALTY
 
-    if no_food_steps > 120: # Too long no food found
-        print("No food found in 120 steps")
-        terminated = True
-        extra_reward -= FAILURE_PENALTY
+    if MODE == "learn":
+        if no_food_steps > 120: # Too long no food found
+            print("No food found in 120 steps")
+            terminated = True
+            extra_reward -= FAILURE_PENALTY
 
-    if terminated or truncated:
-        print("At", rob.get_sim_time())
+    if isinstance(rob, SimulationRobobo):
+        if terminated or truncated:
+            print("At", rob.get_sim_time())
 
     return terminated, truncated, extra_reward
-
 
 class RoboboEnv(Env):
     def __init__(self, rob: IRobobo):
@@ -222,19 +240,12 @@ class RoboboEnv(Env):
             ir_front
         ], dtype=np.float32)
 
-        reward = calculate_fitness(obs, action, food_inc, self.action_stagnation_steps, self.steps_without_food, True, "results.csv")
-        if MODE == "learn":
-            terminated, truncated, extra_reward = termination(self.rob, self.current_food, avg_irs, green_ratio, self.steps_without_food)
-        else:
-            terminated = self.current_step >= self.max_steps
-            truncated = False
-            extra_reward = 0
-            if self.current_food >= 7: # All food found
-                print("\nAll food found \(00)/\n")
-                terminated = True
-
+        reward = calculate_fitness(obs, action, food_inc, self.action_stagnation_steps, self.steps_without_food)
+        terminated, truncated, extra_reward = termination(self.rob, self.current_food, avg_irs, green_ratio, self.steps_without_food)
         reward += extra_reward
         info = {}
+        if MODE == "predict":
+            save_results("results.csv", components=[action[0], action[1], avg_irs, green_ratio, 1.0 - abs(x_center), self.action_stagnation_steps, self.steps_without_food, self.current_food, reward])
         return obs, reward, np.array(terminated, dtype=bool), np.array(truncated, dtype=bool), info
 
     def reset(self, seed=None, options=None):
@@ -298,13 +309,32 @@ def task_2_learning(rob: IRobobo, model_name):
 def task_2_predict(rob: IRobobo, model_name):
     print(f"Predicting trained model {model_name}...")
 
+    results_dir = "/root/results/"
+    os.makedirs(results_dir, exist_ok=True)
+    with open(results_dir + "results.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "timestamp",
+            "forward",
+            "turning",
+            "avg_irs",
+            "green_ratio",
+            "align_reward",
+            "stagnation",
+            "no_food_steps",
+            "food_collected",
+            "fitness"
+        ])
+
     env = DummyVecEnv([lambda: RoboboEnv(rob)])
     model = PPO.load("/root/models/" + model_name, env=env)
 
     obs = env.reset()
-    for _ in range(400):
+    for _ in range(500):
         action, _ = model.predict(obs, deterministic=True)
-        obs, _, _, _ = env.step(action)
+        obs, _, terminated, _ = env.step(action)
+        if terminated:
+            break
 
     if isinstance(rob, SimulationRobobo):
         rob.stop_simulation()

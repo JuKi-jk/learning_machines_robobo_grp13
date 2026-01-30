@@ -14,6 +14,5 @@ export ROS_MASTER_URI="http://10.15.2.107:11311"
 # macOS:
 #    ipconfig getifaddr en1
 export COPPELIA_SIM_IP="10.15.2.64" # lab
-# export COPPELIA_SIM_IP="10.87.1.37"
 
 
